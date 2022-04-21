@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+}
+.canvas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    height: 800px;
+    border: 1px solid red;
+
+}
+
+.square {
+    border: 1px solid black;
+    flex: 1 0 auto;
+}
+
+.color {
+    background-color: red;
+}
