@@ -1,40 +1,88 @@
-
-let x = prompt('number of squares:');
-console.log(x);
+let x = prompt('Chooose number of squares');
 
 const canvas = document.querySelector('.canvas');
 
 let rows = Math.floor(Math.sqrt(x, 2));
 
-    console.log(rows);
 
 for (let i = 0; i<x; i++)
 {
     const square = document.createElement('div');
     square.classList.add('square');
     canvas.appendChild(square);
-    square.style.width = `${100/rows}%`;
+    square.style.width = `${100/rows}%`; 
 }
 
 const squares = document.querySelectorAll('.square');
 
 const pop = document.querySelector('audio');
 
+const buttons = document.querySelectorAll('button')
+
+let colorState = ''
+
+buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+    if (e.target.classList.contains('black'))
+    {
+        colorState = 'black' 
+    }
+    if (e.target.classList.contains('eraser'))
+    {
+        colorState = 'white'
+    }
+    if (e.target.classList.contains('rainbow'))
+    {
+        colorState = 'random'
+    }
+    if (e.target.classList.contains('red'))
+    {
+        colorState = 'red'
+    }
+
+})
+})
+
+let volume = 0.5
+
+input = document.querySelector('input')
+
+input.addEventListener('click', function(e) {
+    volume = e.target.value / 10
+    
+})
+
+clearButton = document.querySelector('.reset')
+
+clearButton.addEventListener('click', ()=>{
+    squares.forEach(square => square.style.backgroundColor = 'white')
+})
+
 squares.forEach(square => {
     square.addEventListener('mouseenter', function(e)
     {
-        pop.currentTime=0.1;
-        pop.volume=0.3;
-        pop.play();
-        e.target.style.backgroundColor=(`${getRandomColor()}`);
+        if (colorState !== '')
+        {
+            pop.currentTime=0.1
+            pop.volume= volume
+            pop.play()
+            if (colorState == 'random')
+            {
+                e.target.style.backgroundColor=(`${getRandomColor()}`);
+            }
+            e.target.style.backgroundColor=(`${colorState}`);
+        }
+        
 
     });
 });
 
+
+
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;

@@ -1,12 +1,12 @@
-* {
-    padding: 0px;
-    margin: 0px;
+*, *::after, *::before {
     box-sizing: border-box;
 }
 
-.centered {
+body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .canvas {
     display: flex;
@@ -14,7 +14,7 @@
     width: 800px;
     height: 800px;
     border: 1px solid red;
-
+    cursor: pointer;
 }
 
 .square {
@@ -22,6 +22,45 @@
     flex: 1 0 auto;
 }
 
-.color {
+
+button {
+    width: 100px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5%;
+}
+
+.black {
+    background-color: black;
+    color: white;
+}
+
+.red {
     background-color: red;
+    color: black;
+}
+.rainbow {
+    background-image: linear-gradient(red, yellow, blue);
+}
+
+.eraser {
+    background-color: white;
+}
+
+.colorSection {
+    display: flex;
+    width: 800px;
+    justify-content: space-around;
+}
+
+img {
+    width: 39px;
+    height: auto;
+}
+
+.audioSection {
+    display: flex;
+    width: 200px;
+    justify-content: space-around;
 }
