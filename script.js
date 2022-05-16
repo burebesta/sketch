@@ -46,10 +46,34 @@ buttons.forEach(button => {
 let volume = 0.5
 
 input = document.querySelector('input')
+image = document.querySelector('#audio')
 
 input.addEventListener('click', function(e) {
     volume = e.target.value / 10
+    if (volume == 0)
+    {
+        image.src = 'audio-muted.png'
+    }
+    else
+    {
+        image.src = 'audio.png'
+    }
     
+})
+
+image.addEventListener('click', ()=> {
+    if (volume == 0)
+    {
+        image.src = 'audio.png'
+        input.value = 5
+        volume = 0.5
+    }
+    else 
+    {
+        image.src = 'audio-muted.png'
+        input.value = 0
+        volume = 0
+    }
 })
 
 clearButton = document.querySelector('.reset')
@@ -58,8 +82,13 @@ clearButton.addEventListener('click', ()=>{
     squares.forEach(square => square.style.backgroundColor = 'white')
 })
 
+
+
+
+
+
 squares.forEach(square => {
-    square.addEventListener('mouseenter', function(e)
+    square.addEventListener(`mouseenter`, function(e)
     {
         if (colorState !== '')
         {
